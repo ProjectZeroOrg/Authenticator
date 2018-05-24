@@ -1,8 +1,8 @@
-#Database Setup Memo
+# Database Setup Memo
 The database server is MariaDB.
-##Dev instance
-###Users
-####dbadmin
+## Dev instance
+### Users
+#### dbadmin
           Username: dbadmin
           Password: adminpass
      Database Name: authdb
@@ -30,7 +30,7 @@ MariaDB [(none)]> show grants for dbadmin;
 
 MariaDB [(none)]>
 ```
-####dbuser    
+#### dbuser    
 The dbuser is created with less privileges - CRUD operations only. It is used by the applications.
 ```
 ariaDB [(none)]> CREATE USER 'dbuser' IDENTIFIED BY 'dbpass';
@@ -54,9 +54,9 @@ MariaDB [(none)]> show grants for dbuser;
 MariaDB [(none)]>
 ```
 
-###Connection
+### Connection
 AuthDB-dev is exposed on 3306 with an ingress service and VirtualBox Network port forwarding.
-####Expose ingress service
+#### Expose ingress service
 ```
 Microsoft Windows [Version 10.0.16299.371]
 (c) 2017 Microsoft Corporation. All rights reserved.
@@ -113,10 +113,10 @@ status:
   loadBalancer: {}
 ```
 
-####Port forwarding
+#### Port forwarding
 A port forwarding rule is added to VirtualBox Network Settings with host port 3306 to guest port 31199 (or whichever port is assigned to the authdb-dev-ingress service).
 
-####Local development
+#### Local development
 Applications datasources are defined as:
 ```
 spring:
@@ -141,7 +141,7 @@ The easiest way to work is to add to the etc/hosts file
         
 Another option is to override the default configurations with environment variables - AUTH_DB_SERVER=46.249.93.103.
 
-###First authdb-init log
+### First authdb-init log
 ```$xslt
 alter table user_roles drop foreign key FKj9553ass9uctjrmh0gkqsmv0d
 alter table user_roles drop foreign key FK55itppkw3i07do3h7qoclqd4k
@@ -165,5 +165,5 @@ insert into user_roles (user_id, roles_id) values (?, ?)
 insert into user_roles (user_id, roles_id) values (?, ?)
 ```
 
-##Prod instance
+## Prod instance
 TBD
