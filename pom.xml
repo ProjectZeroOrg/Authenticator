@@ -40,6 +40,7 @@
 	<modules>
 		<module>auth-lib</module>
         <module>auth-web</module>
+		<module>extras</module>
     </modules>
 
 </project>

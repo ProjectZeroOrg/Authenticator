@@ -1,0 +1,25 @@
+server:
+    port: 8080
+    context-path: /ui
+    session:
+        cookie:
+            name: UI_SESSION
+
+security:
+    user:
+        password: none
+    oauth2:
+        client:
+            accessTokenUri: http://localhost:9999/uaa/oauth/token
+            userAuthorizationUri: http://localhost:9999/uaa/oauth/authorize
+            clientId: Challenge Me
+            clientSecret: challengeMeSecret
+        resource:
+            jwt:
+                key-uri: http://localhost:9999/uaa/oauth/token_key
+
+zuul:
+    routes:
+        api:
+            path: /api/**
+            url: http://localhost:8081/api
