@@ -1,0 +1,105 @@
+server:
+    port: ${AUTH_SERVER_PORT:9999}
+    contextPath: /uaa
+    session:
+        cookie:
+            name: AUTH_SESSION
+
+spring:
+    datasource:
+        url: jdbc:mariadb://${AUTH_DB_SERVER:authdb-dev}:${AUTH_DB_PORT:3306}/authdb
+        username: ${AUTH_DB_USER:dbuser}
+        password: ${AUTH_DB_PASS:dbpass}
+        driver-class-name: org.mariadb.jdbc.Driver
+    jpa:
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        show-sql: true
+
+    social:
+        facebook:
+            appId: 1715784745414888
+            appSecret: abefd6497e9cc01ad03be28509617bf0
+    thymeleaf:
+        cache: false
+
+security:
+    user:
+        password: none
+
+    oauth2:
+        client:
+#            clientId: Challenge Me
+#            clientSecret: challengeMeSecret
+#            authorized-grant-types: authorization_code,refresh_token,password,client_credentials
+#            scope: openid, profile
+            auto-approve: true
+        resource:
+            jwt:
+                privateKey: ${JWT_PRIVATE_KEY:-----BEGIN RSA PRIVATE KEY-----
+                    MIIJKAIBAAKCAgEAx+2mJRNdS6cr9aiTLWIxWgtclGZtFjvLVvj+cyQduY7lvso8
+                    LgLQq47e5xzc6pFupoEj6u+vVR7sb2Ts4CB077Qth0ulY882N1BNKGGU8nIsroNX
+                    /RcfmfA4g13k5fo2LR7fYuaV1m+otNjHMHuk721fYwIh7ooRgVuiOEHeuJA8zX3e
+                    b7kFNzRAso/Df5FJKy5FaxERMyn1M7D7e3R0Gt3dbExEN1NR78EXtALBneV8VxuA
+                    zjjdbIyk+v7JuQRuS47dxy6H7UShvmv/iKyCl26ASnoFzYHmvnoKMNWzGA4q1z0z
+                    orpVu2j3FvqatuyO0I3ZRFjoZ9ZayUWUS+e27OeTg8OqbvbeyGnXHPYCXmyq069R
+                    fEdLthDC3ZvPD1CS2fhXexbkB0MHWRWHKhqL9wRBu1EOSExbqlMXmVFvk4J7/bcs
+                    gKyvL8m5ISO9txvriXJRc3YsqWfNesq6ljdpqMcpJ7gsCLdfXDE4AtYzPiwtd/+C
+                    Krj/UpSfAxylKCPDoo8xjUrsyZXWb7pVnG5OTHHLF0PyEV4SBdUW3I+92y4tz1vB
+                    4UlA34PDvzmRqAzhzSCzINEfV127gw3boochZ2ENT/g5imQVuMIYitIbbYsl3SZ/
+                    z0uk+DubwradCNeeXGw9LQ9+B+YomDZlZ7Lmxa3rSDAwHOLPS8UpNBwCSa8CAwEA
+                    AQKCAgA0Sy7oB7ahcSqIaP2GI2bxPIOMtXXXGPDI4Pv9Nfcob/4b913iUw4tsYMQ
+                    RHZsTHn6x1CTxPnBdAM359glj5fGkwRNnTW3c52kvjZQV6XT/JU/WE+NfZzgcPr3
+                    MXoLxXSiPK8FeXa7zhz8oK8JOW4cyijnBsnFUQvfIA7AVEpjUCb3QPMLmgOJOvup
+                    OP1Twra2urWhmac8EL94M9Szp/QuitW92/0D06Fc6s6+YPIv0LTDPAhm6GzSVb9Z
+                    f4dYA5at4MKVtNAM+aSs4CbIowbNgTPBR0V5SX8HV3iO6Xac1ifSgMmeyMpf6Mao
+                    lggdzKZWWqP3wqGXd3PrrW1qpUMtIY8adpRMMaxl4cAXYoO5Xe7p4wmHhJSq4bIU
+                    3lHP95cmjxZYvBQ+KrHh+rY2Uv5uDF4tmeS5x+4C6GY5kkxTsEHYHlAU4b25M5AN
+                    SKoK0y1TIKWhweaQcNBUDGKeC4clF44wix642DyvHo+rlMCsDsv4YTnTX0/XCkzf
+                    N0y4hXxzGhlg5xHZG2inVpa82eSejEiRgJb30kPoNlAVw8VKWprRU1I6oTQzdZAb
+                    XRMk3z9BpLUEq/6ofyjKHhs3ArBegDplWUzCuIXD+brHmHNTHSB7E7m5x7NRMpdd
+                    IYNxOAIjg1bF4NAD/Q5m/qyLoCDSasvRRAZ104SibCkuEWBxEQKCAQEA8f1wp9zQ
+                    EC0BaQCFAu4ZsWXBb50RHIG5UA3ZpgKhGGECHuuYavfZ1B7Pj9Zt4deXu6SEI1a/
+                    0vGkyMO4PCX9zFdyLYdUSToIyFwzhoUFUM0P6ffIfNlY+wnMcgY+Gw/DLQgKe1b8
+                    3sOW7Bh81hAfdmHNxNaMPX8VqLD6mdgRZQ8U0Mo8TuUkGFu/OolOr1TqQr2HOBc4
+                    jyRfqyqsVSfpZ8cpSA2752PchFSo7n6izIbsLXY6L7iEixG6bk3uZsypcj2n3LS+
+                    6ssYZXDIj9mYxl6buSgZr4YzJazdAFlYUkyVrTG/H8E1hiqob/MyUTvZFruTiwgu
+                    V5DfPoAq7LGrWwKCAQEA04DO5PvYVoq3aO3frw2FIeSCnRTTIvX2FjSLSWtTKvnt
+                    gArYsHKrjW7Qeue1AVj9bHPZPf19O+swXXqHcOUE15ohYkanFu0mB8QUhYvLnHZ2
+                    N7mJ4xGhBLjbG7Qolp0XSs9sXmKXjhguW4Mw/UvCKBnArBOkFKWRYvxRRGhQ/BmH
+                    dpflmg0Ubn0v7Zef52TIaLYzlklppoVP/adPrqM74SU1aYWFxnoMcI0XOzyRYw9U
+                    LpsdRioYHqiR5DNV9BNfZCZXI7Ny1fcT5kbJd/JE08c5AE/U4+/Nv7IHt/z7DM+e
+                    ORToylgfzp4mDzY6kYomkgQB8j/ysie5mpaakyBvPQKCAQAFli1Ios9m4DMdInbv
+                    p2GOd+PsWLrxZolJsNgqffsMHgk3f4boSUqNHBz8nB2zTg/htB2c1z7cdtmwDNyu
+                    /s2KLyaiqHIosp9LSN2jqGSEBgftBdxqDXaBbSt8ImrCoy2FV58uU8bIuck9MB+J
+                    rZucVwuyFKXuMYXlfBh8/sEADUYUv+Z+h8m6ijuy9UKMx7AU1F1PzTFwFI3k3LpX
+                    yPEZhT6NvEtvPx3zLCUuRFwrzp2bOxSCz4a30zPzofb0BpuO2J+Md9vEfeXVSbJH
+                    p+VgBwUfVC6rn7SElSYRAP8J/1yhP/nCmOpMa6Wx1/J8b55GaRQx7IFtYhnVTo4v
+                    IrbrAoIBAELsUgrwiX6wu+IuyoV4cLTNump7yWcZjrlt/NjJZfKGTJkkVXZXgmLp
+                    Onx5TrPTdbTYX1gXGoZYH+CkQbD+Nm8GLSQMmRhPB6aTa67qEg47CaMOSUwZKur0
+                    lxgIBIPLxy/7vB2Ncskaa6i3NUwgqZnItEd+m3+Q+BTrI8fSfjWW2l8zJwp8swdX
+                    A1BZltY/9I31gRM/vXdcXXg0dakbq3nNLT5ram3n9oGykzRCMPq4QfnRSQ0HisRA
+                    sJEVkU/+xUNKQm5gfKipWpmVsnAKr66XLjkkCYfqPB849OpJ2SIvm7ASJqrIAaB+
+                    OCq+DQA6R4QSUo9VnrSyjy8UEmsVaz0CggEBAKzpBw7IeC3cr/1/tQYb8Pt4yQft
+                    cMKm730qIvR+CvwIGHDo4EWmFEw5+D5npPJP0K/nqVE+gOtjLoTwmQFIU5TbaBtg
+                    7WZRZeDsXfKxHJwF5/vOYdixwbtgnJ+yUke+Yk1pXgvq9zOLeyS8dtu2ZRY99nmc
+                    AoNlexcb2QtsE3gqFaPlJ5Zk/Oq0bXPeiBTYXMSe3ovY14al7h8hSpF6HvwK8rVQ
+                    6y8gwfnaxqldPw4jd9X6C9rxmkATQ2i9zK5Plm/tM7U6R4m3GDwn4/64q2GGJOFg
+                    slsWDe37wIf9QRqVYY6pmWT0phRCcL7Wz1RaZegBFxNyYtQ9kcufwbRxVYk=
+                    -----END RSA PRIVATE KEY-----}
+                publicKey: ${JWT_PUBLIC_KEY:-----BEGIN PUBLIC KEY-----
+                    MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAx+2mJRNdS6cr9aiTLWIx
+                    WgtclGZtFjvLVvj+cyQduY7lvso8LgLQq47e5xzc6pFupoEj6u+vVR7sb2Ts4CB0
+                    77Qth0ulY882N1BNKGGU8nIsroNX/RcfmfA4g13k5fo2LR7fYuaV1m+otNjHMHuk
+                    721fYwIh7ooRgVuiOEHeuJA8zX3eb7kFNzRAso/Df5FJKy5FaxERMyn1M7D7e3R0
+                    Gt3dbExEN1NR78EXtALBneV8VxuAzjjdbIyk+v7JuQRuS47dxy6H7UShvmv/iKyC
+                    l26ASnoFzYHmvnoKMNWzGA4q1z0zorpVu2j3FvqatuyO0I3ZRFjoZ9ZayUWUS+e2
+                    7OeTg8OqbvbeyGnXHPYCXmyq069RfEdLthDC3ZvPD1CS2fhXexbkB0MHWRWHKhqL
+                    9wRBu1EOSExbqlMXmVFvk4J7/bcsgKyvL8m5ISO9txvriXJRc3YsqWfNesq6ljdp
+                    qMcpJ7gsCLdfXDE4AtYzPiwtd/+CKrj/UpSfAxylKCPDoo8xjUrsyZXWb7pVnG5O
+                    THHLF0PyEV4SBdUW3I+92y4tz1vB4UlA34PDvzmRqAzhzSCzINEfV127gw3booch
+                    Z2ENT/g5imQVuMIYitIbbYsl3SZ/z0uk+DubwradCNeeXGw9LQ9+B+YomDZlZ7Lm
+                    xa3rSDAwHOLPS8UpNBwCSa8CAwEAAQ==
+                    -----END PUBLIC KEY-----}
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Approval</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+    <h2>Please Confirm</h2>
+    <p>
+        Do you authorize <span th:text="${authorizationRequest.clientId}"></span> at <span th:text="${authorizationRequest.redirectUri}"></span> to access your protected resources?
+    </p>
+    <div class="col-sm-12">
+        <form id="confirmationForm" name="confirmationForm" th:action="@{/oauth/authorize}" method="post">
+            <input name="user_oauth_approval" value="true" type="hidden"/>
+            <input name="authorize" value="Authorize" type="submit" class="btn btn-primary" />
+        </form>
+    </div>
+
+    <div class="col-sm-12">
+        <form id="denialForm" name="denialForm" th:action="@{/oauth/authorize}" method="post">
+            <input name="user_oauth_approval" value="false" type="hidden"/>
+            <input name="deny" value="Deny" type="submit" class="btn btn-default" />
+        </form>
+    </div>
+
+    <div class="clearfix"></div>
+</div>
+</body>
+</html>
