@@ -31,7 +31,7 @@ Their default values are appropriate for local development and most can be overr
 | CLIENT_APP_ID       | Challenge Me       | No need to change.                                                                  |
 | CLIENT_APP_SECRET   | challengeMeSecret  | Definitely should be changed in the prod configuration.                             |
 | FACEBOOK_APP_ID     | 2054424358161118   | No need to change.                                                                  |
-| FACEBOOK_APP_SECRET | 6ea2786127fb5219755d814e298d62dc | Will be changed changed for both prod and dev configurations.         |
+| FACEBOOK_APP_SECRET | 6ea2786127fb5219755d814e298d62dc | It will be letter changed for both prod and dev configurations.       |
 | JWT_PRIVATE_KEY     |                    | Definitely should be changed in the prod configuration.                             |
 | JWT_PUBLIC_KEY      |                    | Goes together with the private key.                                                 |
 
