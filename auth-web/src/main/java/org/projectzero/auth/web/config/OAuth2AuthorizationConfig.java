@@ -33,10 +33,10 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
     @Value("${security.oauth2.client.auto-approve:false}")
     private boolean autoApprove;
 
-    @Value("${security.oauth2.resource.jwt.privateKey}")
+    @Value("${security.oauth2.resource.jwt.private-key}")
     private String jwtPrivateKey;
 
-    @Value("${security.oauth2.resource.jwt.publicKey}")
+    @Value("${security.oauth2.resource.jwt.public-key}")
     private String jwtPublicKey;
 
     @Autowired

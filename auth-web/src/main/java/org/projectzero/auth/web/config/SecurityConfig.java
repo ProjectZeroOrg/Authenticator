@@ -3,6 +3,7 @@ package org.projectzero.auth.web.config;
 import org.projectzero.auth.web.social.FacebookConnectionSignUp;
 import org.projectzero.auth.web.social.FacebookSignInAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +23,9 @@ import org.springframework.social.connect.web.ProviderSignInController;
 @EnableWebSecurity
 @ComponentScan(basePackages = { "org.projectzero.auth.web.social" })
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Value("${security.oauth2.client.default-redirect-uri}")
+    private String defaultRedirectUri;
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -46,22 +50,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(final HttpSecurity http) throws Exception {
         // @formatter:off
         http
+                .authorizeRequests().antMatchers(
+                        "/login*","/signin/**","/signup/**",
+                        "/error**", "/oauth/authorize", "/oauth/confirm_access"
+                ).permitAll()
+                .anyRequest().authenticated()
+                .and()
                 .formLogin().loginPage("/login").permitAll()
-        .and()
-                .requestMatchers().antMatchers("/login*","/signin/**","/signup/**",
-                    "/error**", "/oauth/authorize", "/oauth/confirm_access")
-        .and()
-                .authorizeRequests().anyRequest().authenticated();
-        // @formatter:on
-    }
+                .and()
+                .logout();
+    } // @formatter:on
 
     @Bean
     // @Primary
     public ProviderSignInController providerSignInController() {
         ((InMemoryUsersConnectionRepository) usersConnectionRepository).setConnectionSignUp(facebookConnectionSignup);
-        return new ProviderSignInController(connectionFactoryLocator, usersConnectionRepository, new FacebookSignInAdapter());
+        FacebookSignInAdapter facebookSignInAdapter = new FacebookSignInAdapter();
+        facebookSignInAdapter.setDefaultRedirectUri(defaultRedirectUri);
+        return new ProviderSignInController(connectionFactoryLocator, usersConnectionRepository, facebookSignInAdapter);
     }
 }

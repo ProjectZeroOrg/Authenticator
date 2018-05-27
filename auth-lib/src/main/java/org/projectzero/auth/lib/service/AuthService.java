@@ -1,5 +1,7 @@
 package org.projectzero.auth.lib.service;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.projectzero.auth.lib.entity.Role;
 import org.projectzero.auth.lib.entity.User;
 import org.projectzero.auth.lib.repository.RoleRepository;
@@ -20,6 +22,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class AuthService implements UserDetailsService {
+
+    private static final Log logger = LogFactory.getLog(AuthService.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -67,6 +71,7 @@ public class AuthService implements UserDetailsService {
                     .map(r -> new SimpleGrantedAuthority(r.getName()))
                     .collect(Collectors.toList());
         } catch (Exception e) {
+            logger.warn("Failed to get user roles. Assigning a default user role.", e);
             return Arrays.asList(new SimpleGrantedAuthority(Role.USER_ROLE));
         }
     }

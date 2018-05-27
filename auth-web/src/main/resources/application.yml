@@ -15,12 +15,12 @@ spring:
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-        show-sql: true
+#        show-sql: true
 
     social:
         facebook:
-            appId: 1715784745414888
-            appSecret: abefd6497e9cc01ad03be28509617bf0
+            appId: ${FACEBOOK_APP_ID:2054424358161118}
+            appSecret: ${FACEBOOK_APP_SECRET:6ea2786127fb5219755d814e298d62dc}
     thymeleaf:
         cache: false
 
@@ -30,14 +30,15 @@ security:
 
     oauth2:
         client:
-#            clientId: Challenge Me
-#            clientSecret: challengeMeSecret
+            clientId: ${CLIENT_APP_ID:Challenge Me}
+            clientSecret: ${CLIENT_APP_SECRET:challengeMeSecret}
 #            authorized-grant-types: authorization_code,refresh_token,password,client_credentials
 #            scope: openid, profile
             auto-approve: true
+            default-redirect-uri: https://challengeme.io/login
         resource:
             jwt:
-                privateKey: ${JWT_PRIVATE_KEY:-----BEGIN RSA PRIVATE KEY-----
+                private-key: ${JWT_PRIVATE_KEY:-----BEGIN RSA PRIVATE KEY-----
                     MIIJKAIBAAKCAgEAx+2mJRNdS6cr9aiTLWIxWgtclGZtFjvLVvj+cyQduY7lvso8
                     LgLQq47e5xzc6pFupoEj6u+vVR7sb2Ts4CB077Qth0ulY882N1BNKGGU8nIsroNX
                     /RcfmfA4g13k5fo2LR7fYuaV1m+otNjHMHuk721fYwIh7ooRgVuiOEHeuJA8zX3e
@@ -88,7 +89,7 @@ security:
                     6y8gwfnaxqldPw4jd9X6C9rxmkATQ2i9zK5Plm/tM7U6R4m3GDwn4/64q2GGJOFg
                     slsWDe37wIf9QRqVYY6pmWT0phRCcL7Wz1RaZegBFxNyYtQ9kcufwbRxVYk=
                     -----END RSA PRIVATE KEY-----}
-                publicKey: ${JWT_PUBLIC_KEY:-----BEGIN PUBLIC KEY-----
+                public-key: ${JWT_PUBLIC_KEY:-----BEGIN PUBLIC KEY-----
                     MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAx+2mJRNdS6cr9aiTLWIx
                     WgtclGZtFjvLVvj+cyQduY7lvso8LgLQq47e5xzc6pFupoEj6u+vVR7sb2Ts4CB0
                     77Qth0ulY882N1BNKGGU8nIsroNX/RcfmfA4g13k5fo2LR7fYuaV1m+otNjHMHuk
