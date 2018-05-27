@@ -5,6 +5,11 @@ server:
         cookie:
             name: AUTH_SESSION
 
+management:
+    port: 8081
+    security:
+        enabled: false
+
 spring:
     datasource:
         url: jdbc:mariadb://${AUTH_DB_SERVER:authdb-dev}:${AUTH_DB_PORT:3306}/authdb

@@ -22,4 +22,4 @@ zuul:
     routes:
         api:
             path: /api/**
-            url: http://localhost:8081/api
+            url: http://localhost:9081/api
