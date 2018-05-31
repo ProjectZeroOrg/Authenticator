@@ -1,6 +1,6 @@
 server:
     port: ${AUTH_SERVER_PORT:9999}
-    contextPath: /uaa
+    contextPath: ${AUTH_APP_CONTEXT_PATH:/uaa}
     session:
         cookie:
             name: AUTH_SESSION

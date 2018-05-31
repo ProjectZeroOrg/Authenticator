@@ -12,4 +12,18 @@ public class SampleResourceApplication {
         SpringApplication.run(SampleResourceApplication.class, args);
     }
 
+    static {
+        //for localhost testing only
+        javax.net.ssl.HttpsURLConnection.setDefaultHostnameVerifier(
+                new javax.net.ssl.HostnameVerifier(){
+
+                    public boolean verify(String hostname,
+                                          javax.net.ssl.SSLSession sslSession) {
+                        if (hostname.contains("46.249.93.103")) {
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+    }
 }

@@ -22,6 +22,7 @@ Their default values are appropriate for local development and most can be overr
 | ENV var             | default            | comment                                                                             |
 | :------------------ |:-------------------| :-----------------------------------------------------------------------------------|
 | AUTH_SERVER_PORT    | 9999               | Good for local dev. In openshift it should be changed to 8080.                      |
+| AUTH_APP_CONTEXT_PATH | /uaa             | Good for local dev. In openshift it should be changed to just /.                    |
 | AUTH_DB_SERVER      | authdb-dev         | It is fine like this. Should be changed to authdb-prod in the prod configuration.   |
 | AUTH_DB_PORT        | 3306               | No need to change.                                                                  |
 | AUTH_DB_ADMIN_USER  | dbadmin            | No need to change.                                                                  |

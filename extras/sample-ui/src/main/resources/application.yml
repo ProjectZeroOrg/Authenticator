@@ -1,5 +1,4 @@
 server:
-    port: 8080
     context-path: /ui
     session:
         cookie:
@@ -10,13 +9,13 @@ security:
         password: none
     oauth2:
         client:
-            accessTokenUri: http://localhost:9999/uaa/oauth/token
-            userAuthorizationUri: http://localhost:9999/uaa/oauth/authorize
+            accessTokenUri: https://auth-dev.46.249.93.103.nip.io/oauth/token
+            userAuthorizationUri: https://auth-dev.46.249.93.103.nip.io/oauth/authorize
             clientId: Challenge Me
             clientSecret: challengeMeSecret
         resource:
             jwt:
-                key-uri: http://localhost:9999/uaa/oauth/token_key
+                key-uri: https://auth-dev.46.249.93.103.nip.io/oauth/token_key
 
 zuul:
     routes:
