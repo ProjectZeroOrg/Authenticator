@@ -9,6 +9,9 @@ Authenticator is deployed on an OpenShift environment. The "s2i-spring-boot-came
 
 The default values are used for the rest of the options.
 
+Additional configurations are added to setup the environment variables AUTH_SERVER_PORT and AUTH_APP_CONTEXT_PATH.
+The values for these are taken from previously created Config Map.
+
 ## TSL certificate
 The certificate is generated using steps from this guide https://www.akadia.com/services/ssh_test_certificate.html:
 ```
