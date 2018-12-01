@@ -9,5 +9,5 @@ spring:
             hibernate:
                 dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         show-sql: true
-        hibernate:
+#        hibernate:
 #            ddl-auto: create # uncomment this to recreate auth database
