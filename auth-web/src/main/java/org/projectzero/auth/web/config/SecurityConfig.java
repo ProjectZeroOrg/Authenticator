@@ -54,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // @formatter:off
         http
                 .authorizeRequests().antMatchers(
-                        "/login*","/signin/**","/signup/**", "/resources/**", "/health",
+                        "/login*","/signin/**","/signup/**", "/resources/**", "/webjars/**", "/health",
                         "/error**", "/oauth/authorize", "/oauth/confirm_access"
                 ).permitAll()
                 .anyRequest().authenticated()
