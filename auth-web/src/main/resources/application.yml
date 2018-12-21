@@ -40,7 +40,7 @@ security:
             clientSecret: ${CLIENT_APP_SECRET:challengeMeSecret}
 #            authorized-grant-types: authorization_code,refresh_token,password,client_credentials
 #            scope: openid, profile
-            auto-approve: true
+            auto-approve: false
             default-redirect-uri: https://challengeme.io/login
         resource:
             jwt:
